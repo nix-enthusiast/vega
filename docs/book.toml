@@ -1,0 +1,14 @@
+[book]
+authors = ["nix-enthusiast"]
+language = "en"
+src = "src"
+title = "The Vega Programming Language"
+
+[output.html]
+mathjax-support = true
+
+#[output.pdf]
+#pdf = true
+
+[output.html.code.hidelines]
+vega = ";;"
