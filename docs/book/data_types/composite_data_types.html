@@ -146,6 +146,9 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+                        <a href="https://github.com/nix-enthusiast/vega" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
 
                     </div>
                 </div>
@@ -182,69 +185,69 @@
 <h2 id="arrays"><a class="header" href="#arrays">Arrays</a></h2>
 <h3 id="list-ntt"><a class="header" href="#list-ntt">List (<code>[N:t]T</code>)</a></h3>
 <p>Growable array which allocated from heap to store <code>T</code> and the optional sentinel <code>t</code>, where <code>t</code> is <code>T</code>, with the minimum size of <code>N</code>.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>x = [1, 2, 3]
-x = char['h', 'e', 'l', 'l', 'o']
-<span class="boring">end
-</span></code></pre>
-<h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
-<p>Declared with <code>'{}</code> notation.</p>
-<p>Enums are both tagged numbers and sum types.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>Base = '{
-  /* C++ - like tagged numbers */
-  Base2: 2
-  Base8: 8
-  Base16: 16
-  
-  /* Aliasing */
-  Binary: Base.Base2
-  Octal: Base.Base8
-  Hexadecimal: Base.Base16
-
-  /* Sum types */
-  Other: u8
-}
-
-myHex = Base.Hexadecimal
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>x := [1, 2, 3]
+x := char['h', 'e', 'l', 'l', 'o']
 <span class="boring">end
 </span></code></pre>
 <h2 id="tuples-"><a class="header" href="#tuples-">Tuples (<code>{}</code>)</a></h2>
 <p>An ordered set with finite size.</p>
-<p>Declared with <code>{T,V,..,N}</code></p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>coordinates = {74.5, 91.4}
+<p>Declared using <code>{T,V,..,N}</code></p>
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>coordinates := {74.5, 91.4}
+<span class="boring">end
+</span></code></pre>
+<h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
+<p>Declared using <code>'{}</code> notation.</p>
+<p>Enums are both tagged numbers and sum types.</p>
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>Base := '{
+  /* C++ - like tagged numbers */
+  Base2 i8 := 2
+  Base8 i8 := 8
+  Base16 i8 := 16
+  
+  /* Aliasing (type of the right hand side will be used) */
+  Binary := Base.Base2
+  Octal := Base.Base8
+  Hexadecimal := Base.Base16
+
+  /* Sum types */
+  Other u8
+}
+
+myHex := Base.Hexadecimal
 <span class="boring">end
 </span></code></pre>
 <h2 id="records"><a class="header" href="#records">Records</a></h2>
-<p>Declared with <code>#{}</code> notation</p>
+<p>Declared using <code>#{}</code> notation</p>
 <p>Records are the data types to store data in a structured composition.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>Person = #{
-  name: str
-  age: u8
-  id: any
-  faxNumber: ?str
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>Person := #{
+  name str
+  age u8
+  id any
+  faxNumber ?str
 }
 
-Vase(T) = { inner: T }
+Vase(T) := #{ inner: T }
 
 /*It's not necessary to state fields unless it is necessary to write in a specific order*/
-Jan = { 
+Jan := { 
   "Jan"
   20
-  "453-687-923-11"
+  "8675309"
   nil
 }
 
-vaseOfi8 = Vase(i8){ 23 }
+vaseOfi8 := Vase(i8){ 23 }
 <span class="boring">end
 </span></code></pre>
 <h2 id="str"><a class="header" href="#str"><code>str</code></a></h2>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>s = "Hello, World!"
-s = #['f', 'o', 'o']
-s = ('b', 'a', 'r')
+<p>Declared using <code>""</code> notation.</p>
+<p><code>str</code> is basically an immutable and <a href="https://en.wikipedia.org/wiki/String_interning">internable</a> <code>[]u8</code> and used for containing information in text with <a href="https://www.unicode.org/glossary/#UTF_8">UTF-8</a> encoding.</p>
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>msg := "Hello, World!"
 <span class="boring">end
 </span></code></pre>
 

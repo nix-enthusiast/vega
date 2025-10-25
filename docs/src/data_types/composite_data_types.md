@@ -10,36 +10,9 @@ Composite data types (CDTs) are used for storing more complex data in a structur
 Growable array which allocated from heap to store `T` and the optional sentinel `t`, where `t` is `T`, with the minimum size of `N`.
 
 ```vega
-;;main = |_, _|
-x = [1, 2, 3]
-x = char['h', 'e', 'l', 'l', 'o']
-;;end
-```
-
-## Enums
-
-Declared with `'{}` notation.
-
-Enums are both tagged numbers and sum types.
-
-```vega
-;;main = |_, _|
-Base = '{
-  /* C++ - like tagged numbers */
-  Base2: 2
-  Base8: 8
-  Base16: 16
-  
-  /* Aliasing */
-  Binary: Base.Base2
-  Octal: Base.Base8
-  Hexadecimal: Base.Base16
-
-  /* Sum types */
-  Other: u8
-}
-
-myHex = Base.Hexadecimal
+;;Main := |_, _|
+x := [1, 2, 3]
+x := char['h', 'e', 'l', 'l', 'o']
 ;;end
 ```
 
@@ -47,48 +20,78 @@ myHex = Base.Hexadecimal
 
 An ordered set with finite size.
 
-Declared with `{T,V,..,N}`
+Declared using `{T,V,..,N}`
 
 ```vega
-;;main = |_, _|
-coordinates = {74.5, 91.4}
+;;Main := |_, _|
+coordinates := {74.5, 91.4}
+;;end
+```
+
+## Enums
+
+Declared using `'{}` notation.
+
+Enums are both tagged numbers and sum types.
+
+```vega
+;;Main := |_, _|
+Base := '{
+  /* C++ - like tagged numbers */
+  Base2 i8 := 2
+  Base8 i8 := 8
+  Base16 i8 := 16
+  
+  /* Aliasing (type of the right hand side will be used) */
+  Binary := Base.Base2
+  Octal := Base.Base8
+  Hexadecimal := Base.Base16
+
+  /* Sum types */
+  Other u8
+}
+
+myHex := Base.Hexadecimal
 ;;end
 ```
 
 ## Records
 
-Declared with `#{}` notation
+Declared using `#{}` notation
 
 Records are the data types to store data in a structured composition.
 
 ```vega
-;;main = |_, _|
-Person = #{
-  name: str
-  age: u8
-  id: any
-  faxNumber: ?str
+;;Main := |_, _|
+Person := #{
+  name str
+  age u8
+  id any
+  faxNumber ?str
 }
 
-Vase(T) = { inner: T }
+Vase(T) := #{ inner: T }
 
 /*It's not necessary to state fields unless it is necessary to write in a specific order*/
-Jan = { 
+Jan := { 
   "Jan"
   20
-  "453-687-923-11"
+  "8675309"
   nil
 }
 
-vaseOfi8 = Vase(i8){ 23 }
+vaseOfi8 := Vase(i8){ 23 }
 ;;end
 ```
 
 ## `str`
+
+Declared using `""` notation.
+
+`str` is basically an immutable and [internable](https://en.wikipedia.org/wiki/String_interning) `[]u8` and used for containing information in text with [UTF-8](https://www.unicode.org/glossary/#UTF_8) encoding.
+
 ```vega
-;;main = |_, _|
-s = "Hello, World!"
-s = #['f', 'o', 'o']
-s = ('b', 'a', 'r')
+;;Main := |_, _|
+msg := "Hello, World!"
 ;;end
 ```

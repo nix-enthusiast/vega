@@ -28,10 +28,10 @@
 A special list with the optional length of `L` and width of `W`, for advanced mathematical calculations.
   
 ```vega
-;;main = |_, _|
-x = #[1, 2, 3; 4, 5, 6; 7, 8, 9] 
+;;Main := |_, _|
+matrix_1 := #[1, 2, 3; 4, 5, 6; 7, 8, 9] 
 
-x = [3:3]int#[ 1 2 3
+matrix_2 := [3:3]int#[ 1 2 3
                4 5 6
                7 8 9 ]  
 ;;end               

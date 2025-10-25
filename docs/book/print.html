@@ -147,6 +147,9 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
+                        <a href="https://github.com/nix-enthusiast/vega" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
 
                     </div>
                 </div>
@@ -181,7 +184,7 @@
                         <h1 id="welcome"><a class="header" href="#welcome">Welcome</a></h1>
 <p>Welcome to the Vega programming language! In this documentation will start from roots of the language and continue until every detail of it is explained with examples.</p>
 <p>This documentation is written for Vega version 1.0.0</p>
-<p>PDF version of this documentation is provided in the <a href="">GitHub repository</a> and this version can be read offline by typing <code>camp doc --doc</code></p>
+<p>PDF version of this documentation is provided in the GitHub repository and this version can be read offline by typing <code>orbit doc --doc</code></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="preamble"><a class="header" href="#preamble">Preamble</a></h1>
 <p>In the software world, there are many programming languages with different paradigms and approaches for completing a given task.</p>
 <p>Naturally, this has led to many interesting - and often fascinating - outcomes. It is undeniable that C++, Rust, Java, Erlang, Go, Haskell, and OCaml are both inspired by their priors and influenced many came after.</p>
@@ -196,39 +199,40 @@
 <p>Vega is licensed with <a href="https://choosealicense.com/licenses/bsd-3-clause/">BSD-3 Clause License</a>. Hence, please feel free to tinker internals, look how they work and release your own Vega version.</p>
 <p><em>- Nix-Enthusiast</em></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="keywords"><a class="header" href="#keywords">Keywords</a></h1>
-<h2 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h2>
-<h3 id="run"><a class="header" href="#run"><code>run</code></a></h3>
-<h2 id="structural"><a class="header" href="#structural">Structural</a></h2>
-<h3 id="return"><a class="header" href="#return"><code>return</code></a></h3>
-<h2 id="control-flow"><a class="header" href="#control-flow">Control Flow</a></h2>
-<h3 id="if"><a class="header" href="#if"><code>if</code></a></h3>
-<h3 id="try-and-catch"><a class="header" href="#try-and-catch"><code>try</code> and <code>catch</code></a></h3>
-<h3 id="end"><a class="header" href="#end"><code>end</code></a></h3>
-<h2 id="logical-and-bit-manipulation"><a class="header" href="#logical-and-bit-manipulation">Logical and Bit Manipulation</a></h2>
-<h3 id="is"><a class="header" href="#is"><code>is</code></a></h3>
-<h3 id="and"><a class="header" href="#and"><code>and</code></a></h3>
-<h3 id="or"><a class="header" href="#or"><code>or</code></a></h3>
-<h3 id="xor"><a class="header" href="#xor"><code>xor</code></a></h3>
-<h3 id="not"><a class="header" href="#not"><code>not</code></a></h3>
-<h3 id="bsh"><a class="header" href="#bsh"><code>bsh</code></a></h3>
-<h2 id="literal"><a class="header" href="#literal">Literal</a></h2>
-<h3 id="true"><a class="header" href="#true"><code>true</code></a></h3>
-<h3 id="false"><a class="header" href="#false"><code>false</code></a></h3>
-<h3 id="nil"><a class="header" href="#nil"><code>nil</code></a></h3>
-<h2 id="modifiers"><a class="header" href="#modifiers">Modifiers</a></h2>
-<h3 id=""><a class="header" href="#"><code>!</code></a></h3>
-<h3 id="-1"><a class="header" href="#-1"><code>?</code></a></h3>
-<h3 id="-2"><a class="header" href="#-2"><code>(!)</code></a></h3>
-<h3 id="-3"><a class="header" href="#-3"><code>()</code></a></h3>
-<h2 id="modulenamespace"><a class="header" href="#modulenamespace">Module/Namespace</a></h2>
-<h3 id="pub"><a class="header" href="#pub"><code>pub</code></a></h3>
-<h3 id="import"><a class="header" href="#import"><code>import</code></a></h3>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="data-types"><a class="header" href="#data-types">Data Types</a></h1>
-<p>Data is an informative value in a scattered or structured composition, which can both derive or be derived by another data.</p>
-<p>Storing and manipulating data is the primary purpose of all programming languages. In this section, different variants of the data types in Vega will be explained.</p>
+<p>Keywords are reserved words that provide core functionality to the programming language.</p>
+<p>Vega has 23 keywords, each linked to its relevant section.</p>
+<div class="table-wrapper"><table><thead><tr><th>Keyword</th><th>Look At</th></tr></thead><tbody>
+<tr><td><code>run</code></td><td><a href="./multithreading_and_concurrency.html">Multithreading and Concurrency</a></td></tr>
+<tr><td><code>return</code></td><td><a href="./functions_and_behaviors.html">Functions and Behaviors</a></td></tr>
+<tr><td><code>if</code></td><td><a href="./control_flow.html">Conditional Branching</a></td></tr>
+<tr><td><code>try</code></td><td><a href="./error_handling.html">Error Handling</a></td></tr>
+<tr><td><code>catch</code></td><td><a href="./error_handling.html">Error Handling</a></td></tr>
+<tr><td><code>end</code></td><td><a href="./variables_and_scopes/scopes.html">Scopes</a></td></tr>
+<tr><td><code>is</code></td><td><a href="./polymorphism/reflection.html">Reflection</a></td></tr>
+<tr><td><code>and</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
+<tr><td><code>or</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
+<tr><td><code>xor</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
+<tr><td><code>not</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
+<tr><td><code>bsh</code></td><td><a href="./standard_library/math.html">math</a></td></tr>
+<tr><td><code>true</code></td><td><a href="./control_flow.html">Control Flow</a></td></tr>
+<tr><td><code>false</code></td><td><a href="./control_flow.html">Control Flow</a></td></tr>
+<tr><td><code>nil</code></td><td><a href="./variables_and_scopes_and_namespace/variables.html">Variables</a></td></tr>
+<tr><td><code>noreturn</code></td><td><a href="./functions_and_behaviors/functions.html">Functions</a></td></tr>
+<tr><td><code>mut</code></td><td><a href="./variables_and_scopes/variables.html">Variables</a></td></tr>
+<tr><td><code>maybe</code></td><td><a href="./variables_and_scopes/variables.html">Variables</a></td></tr>
+<tr><td><code>!</code></td><td><a href="./error_handling.html">Error Handling</a></td></tr>
+<tr><td><code>pub</code></td><td><a href="./the_orbit_package_manager/orb.html">Orb</a></td></tr>
+<tr><td><code>import</code></td><td><a href="./the_orbit_package_manager/importing_orbs.html">Importing Orbs</a></td></tr>
+<tr><td><code>as</code></td><td><a href="./the_orbit_package_manager/importing_orbs.html">Importing Orbs</a> and <a href="./standard_library/behaviors.html">behaviors</a></td></tr>
+<tr><td><code>external</code></td><td><a href="./ffi.html">FFI</a></td></tr>
+</tbody></table>
+</div><div style="break-before: page; page-break-before: always;"></div><h1 id="data-types"><a class="header" href="#data-types">Data Types</a></h1>
+<p>Data is an informative value, which is either in a structured or unstructured form and capable of both being derived and deriving others.</p>
+<p>The primary purpose of any programming language is to store, transform, and manipulate data. Vega provides several distinct data types to accomplish this purpose.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="primitives"><a class="header" href="#primitives">Primitives</a></h1>
-<p>Primitives are the built-in essential types to build the rest of the language. Other types not mentioned here is derived or build upon these types.</p>
-<h3 id="integers"><a class="header" href="#integers">Integers</a></h3>
+<p>Primitives are the built-in essential types to build the rest of the language. Other types not mentioned here are either derived or built upon these primitives.</p>
+<h2 id="integers"><a class="header" href="#integers">Integers</a></h2>
+<p>Integers are binary representations of whole values.</p>
 <div class="table-wrapper"><table><thead><tr><th>Bits/Sign</th><th>Signed</th><th>Unsigned</th></tr></thead><tbody>
 <tr><td>\(8\)</td><td><code>i8</code></td><td><code>u8</code></td></tr>
 <tr><td>\(16\)</td><td><code>i16</code></td><td><code>u16</code></td></tr>
@@ -236,10 +240,11 @@
 <tr><td>\(64\)</td><td><code>i64</code></td><td><code>u64</code></td></tr>
 <tr><td>\(128\)</td><td><code>i128</code></td><td><code>u128</code></td></tr>
 <tr><td>\(pointer\)<sup class="footnote-reference" id="fr-1-1"><a href="#footnote-1">1</a></sup></td><td><code>int</code></td><td><code>uint</code></td></tr>
-<tr><td>\(2^{pointer}\)</td><td><code>bint</code></td><td></td></tr>
+<tr><td>\(2^{pointer}\)</td><td><code>ibig</code></td><td></td></tr>
 </tbody></table>
 </div>
-<h3 id="floats"><a class="header" href="#floats">Floats</a></h3>
+<h2 id="floats"><a class="header" href="#floats">Floats</a></h2>
+<p>The <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a>-compliant binary representation of real values with limited precision.</p>
 <div class="table-wrapper"><table><thead><tr><th>Bits</th><th>Type</th></tr></thead><tbody>
 <tr><td>\(16\)</td><td><code>f16</code></td></tr>
 <tr><td>\(32\)</td><td><code>f32</code></td></tr>
@@ -247,10 +252,11 @@
 <tr><td>\(80\)</td><td><code>f80</code></td></tr>
 <tr><td>\(128\)</td><td><code>f128</code></td></tr>
 <tr><td>\(pointer\)</td><td><code>float</code></td></tr>
-<tr><td>\(2^{pointer}\)</td><td><code>bfloat</code></td></tr>
+<tr><td>\(2^{pointer}\)</td><td><code>fbig</code></td></tr>
 </tbody></table>
 </div>
-<h3 id="ffi-numbers"><a class="header" href="#ffi-numbers">FFI Numbers</a></h3>
+<h2 id="ffi-numbers"><a class="header" href="#ffi-numbers">FFI Numbers</a></h2>
+<p>The aliases of integer and float primitives used to import numeric types in their appropriate <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> representation from external libraries.</p>
 <div class="table-wrapper"><table><thead><tr><th>C</th><th>Signed</th><th>Unsigned</th></tr></thead><tbody>
 <tr><td><code>char</code></td><td><code>c_char</code></td><td><code>c_u_char</code></td></tr>
 <tr><td><code>short</code></td><td><code>c_short</code></td><td><code>c_u_short</code></td></tr>
@@ -262,19 +268,19 @@
 <tr><td><code>long double</code></td><td><code>c_long_double</code></td><td></td></tr>
 </tbody></table>
 </div>
-<h3 id="bool"><a class="header" href="#bool"><code>bool</code></a></h3>
-<p>Boolean are single-bit values, which can be either <code>true</code> or <code>false</code>.</p>
-<p>Despite their size being 1 bit, they use 1 byte (8 bits), since the smallest memory block is 1 byte.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>x = true
-x = false
+<h2 id="bool"><a class="header" href="#bool"><code>bool</code></a></h2>
+<p>A single-bit value which can be either <code>true</code> or <code>false</code>.</p>
+<p>Although one bit suffices for a boolean compiler has to allocate one byte for it, since the smallest memory block is 1 byte.</p>
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>good := true
+bad := false
 <span class="boring">end
 </span></code></pre>
-<h3 id="char"><a class="header" href="#char"><code>char</code></a></h3>
-<p>Represents a single <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode Scalar Value</a> inside <code>u32</code>.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>c = 'a'
-c = '🥔'
+<h2 id="char"><a class="header" href="#char"><code>char</code></a></h2>
+<p>An <code>u32</code> value that represents a single <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode Scalar Value</a>.</p>
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>a := 'a'
+potato := '🥔'
 <span class="boring">end
 </span></code></pre>
 <hr>
@@ -286,69 +292,69 @@ c = '🥔'
 <h2 id="arrays"><a class="header" href="#arrays">Arrays</a></h2>
 <h3 id="list-ntt"><a class="header" href="#list-ntt">List (<code>[N:t]T</code>)</a></h3>
 <p>Growable array which allocated from heap to store <code>T</code> and the optional sentinel <code>t</code>, where <code>t</code> is <code>T</code>, with the minimum size of <code>N</code>.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>x = [1, 2, 3]
-x = char['h', 'e', 'l', 'l', 'o']
-<span class="boring">end
-</span></code></pre>
-<h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
-<p>Declared with <code>'{}</code> notation.</p>
-<p>Enums are both tagged numbers and sum types.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>Base = '{
-  /* C++ - like tagged numbers */
-  Base2: 2
-  Base8: 8
-  Base16: 16
-  
-  /* Aliasing */
-  Binary: Base.Base2
-  Octal: Base.Base8
-  Hexadecimal: Base.Base16
-
-  /* Sum types */
-  Other: u8
-}
-
-myHex = Base.Hexadecimal
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>x := [1, 2, 3]
+x := char['h', 'e', 'l', 'l', 'o']
 <span class="boring">end
 </span></code></pre>
 <h2 id="tuples-"><a class="header" href="#tuples-">Tuples (<code>{}</code>)</a></h2>
 <p>An ordered set with finite size.</p>
-<p>Declared with <code>{T,V,..,N}</code></p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>coordinates = {74.5, 91.4}
+<p>Declared using <code>{T,V,..,N}</code></p>
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>coordinates := {74.5, 91.4}
+<span class="boring">end
+</span></code></pre>
+<h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
+<p>Declared using <code>'{}</code> notation.</p>
+<p>Enums are both tagged numbers and sum types.</p>
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>Base := '{
+  /* C++ - like tagged numbers */
+  Base2 i8 := 2
+  Base8 i8 := 8
+  Base16 i8 := 16
+  
+  /* Aliasing (type of the right hand side will be used) */
+  Binary := Base.Base2
+  Octal := Base.Base8
+  Hexadecimal := Base.Base16
+
+  /* Sum types */
+  Other u8
+}
+
+myHex := Base.Hexadecimal
 <span class="boring">end
 </span></code></pre>
 <h2 id="records"><a class="header" href="#records">Records</a></h2>
-<p>Declared with <code>#{}</code> notation</p>
+<p>Declared using <code>#{}</code> notation</p>
 <p>Records are the data types to store data in a structured composition.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>Person = #{
-  name: str
-  age: u8
-  id: any
-  faxNumber: ?str
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>Person := #{
+  name str
+  age u8
+  id any
+  faxNumber ?str
 }
 
-Vase(T) = { inner: T }
+Vase(T) := #{ inner: T }
 
 /*It's not necessary to state fields unless it is necessary to write in a specific order*/
-Jan = { 
+Jan := { 
   "Jan"
   20
-  "453-687-923-11"
+  "8675309"
   nil
 }
 
-vaseOfi8 = Vase(i8){ 23 }
+vaseOfi8 := Vase(i8){ 23 }
 <span class="boring">end
 </span></code></pre>
 <h2 id="str"><a class="header" href="#str"><code>str</code></a></h2>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>s = "Hello, World!"
-s = #['f', 'o', 'o']
-s = ('b', 'a', 'r')
+<p>Declared using <code>""</code> notation.</p>
+<p><code>str</code> is basically an immutable and <a href="https://en.wikipedia.org/wiki/String_interning">internable</a> <code>[]u8</code> and used for containing information in text with <a href="https://www.unicode.org/glossary/#UTF_8">UTF-8</a> encoding.</p>
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>msg := "Hello, World!"
 <span class="boring">end
 </span></code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="algebraic-data-types"><a class="header" href="#algebraic-data-types">Algebraic Data Types</a></h1>
@@ -376,43 +382,189 @@ s = ('b', 'a', 'r')
 </div>
 <h3 id="matrix-lwt"><a class="header" href="#matrix-lwt">Matrix (<code>#[L:W]T</code>)</a></h3>
 <p>A special list with the optional length of <code>L</code> and width of <code>W</code>, for advanced mathematical calculations.</p>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>x = #[1, 2, 3; 4, 5, 6; 7, 8, 9] 
+<pre><code class="language-vega"><span class="boring">Main := |_, _|
+</span>matrix_1 := #[1, 2, 3; 4, 5, 6; 7, 8, 9] 
 
-x = [3:3]int#[ 1 2 3
+matrix_2 := [3:3]int#[ 1 2 3
                4 5 6
                7 8 9 ]  
 <span class="boring">end               
 </span></code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="functions-and-interfaces"><a class="header" href="#functions-and-interfaces">Functions and Interfaces</a></h1>
-<h2 id="functions-f"><a class="header" href="#functions-f">Functions (<code>f()</code>)</a></h2>
-<pre><code class="language-vega"><span class="boring">main = |_, _|
-</span>  runFn = |fn: f(str) -&gt; (), val: str|; fn val; end
+<div style="break-before: page; page-break-before: always;"></div><h1 id="notations"><a class="header" href="#notations">Notations</a></h1>
+<p>Notations are short prefixes or suffixes to distinguish ambiguous literal values or prevent the compiler from using the default type for that literal.</p>
+<h2 id="binary-notation-0b"><a class="header" href="#binary-notation-0b">Binary Notation (<code>0b</code>)</a></h2>
+<p>Binary notation is mostly used for <a href="https://developer.mozilla.org/en-US/docs/Glossary/Bitwise_flags">bit flags</a>.</p>
+<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+</span>HAS_SWORD := 0b10000000
+HAS_WAND := 0b01000000
+HAS_ARROW := 0b00100000
+HAS_ARMOR := 0b00010000
+HAS_MINION := 0b00001000
+MAGE := 0b00000100
+WARRIOR := 0b00000010
+ARCHER := 0b00000001
 
-  x: f(str) -&gt; () = |name: str| echo "Hi {name}!"; end
-  
-  runFn x "Vega"
+<span class="boring">Main := |_, _|
+</span>/*Let's create a fellow archer with an armor, minion, and arrow*/
+archer := 0b00111001
+
+Assert archer and HAS_ARROW
+Assert archer and HAS_ARMOR
+Assert archer and HAS_MINION
+Assert archer and ARCHER
 <span class="boring">end
 </span></code></pre>
-<h2 id="interfaces"><a class="header" href="#interfaces">Interfaces</a></h2>
-<pre><code class="language-vega">T is ToString where
-  toString: f(T) -&gt; str
-end
+<h2 id="octal-notation-0o"><a class="header" href="#octal-notation-0o">Octal Notation (<code>0o</code>)</a></h2>
+<p>Octal notation is mostly used for <a href="https://developer.mozilla.org/en-US/docs/Glossary/Bitwise_flags">file permissions</a> of <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a>-compliant systems.</p>
+<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+</span>EXEC := 0o1
+WRITE := 0o2
+READ := 0o4
+RWX := 0o7
+RE := 0o5
 
-Person = #{
-  name: str
-  age: u8
-}
+<span class="boring">Main := |_, _|
+</span>perm := 0o755
 
-Person is ToString where
-  toString = |p: Person| std.fmt.sprintf "Name: %s, Age: %i" p.name p.age end
-end
+user := (perm bsh 16) and RWX
+group := ((perm bsh 8) and 0xFF) and RE
+other := (perm and 0xFF) and RE
 
-<span class="boring">main = |_, _|
-</span>p = Person {"Joe" ; 23}
-std.testing.assertEq "Name: Joe, Age: 23" (toString p)
+Assert user = RWX
+Assert group = RE
+Assert other = RE
 <span class="boring">end
 </span></code></pre>
+<h2 id="hexadecimal-notation-0x"><a class="header" href="#hexadecimal-notation-0x">Hexadecimal Notation (<code>0x</code>)</a></h2>
+<p>Hexadecimal notation is mostly used for reading/writing raw data as bytes.</p>
+<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+</span><span class="boring"> import std/io/Read
+</span>MAGIC := [0x7f, 0x45, 0x4C, 0x46]
+
+<span class="boring">Main := |_, _|
+</span>read_bytes := Read("my_elf")
+
+Assert read_bytes[..4] = MAGIC
+<span class="boring">end
+</span></code></pre>
+<h2 id="integer-notation-_in-or-_un"><a class="header" href="#integer-notation-_in-or-_un">Integer notation (<code>_iN</code> or <code>_uN</code>)</a></h2>
+<p>Integer notation is used for disambiguating a written compile-time integer to the requested type. <code>N</code> stands for the <a href="./data_types/primitives.html#integers">bit size of the integer</a>.</p>
+<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+</span><span class="boring">Main := |_, _|
+</span>number := 12.34_i16
+number_big := 12.34_ibig
+
+Assert number is i16
+Assert number_big is ibig
+<span class="boring">end
+</span></code></pre>
+<h2 id="float-notation-_fn"><a class="header" href="#float-notation-_fn">Float notation (<code>_fN</code>)</a></h2>
+<p>Float notation is used for disambiguating a written compile-time float to the requested type. <code>N</code> stands for the <a href="./data_types/primitives.html#floats">bit size of the float</a>.</p>
+<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+</span><span class="boring">Main := |_, _|
+</span>number := 12.34_f16
+number_big := 12.34_fbig
+
+Assert number is f16
+Assert number_big is fbig
+<span class="boring">end
+</span></code></pre>
+<h2 id="thousands-separator-_"><a class="header" href="#thousands-separator-_">Thousands Separator (<code>_</code>)</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Decimal_separator#Digit_grouping">Thousands Separator</a> is used to assist the readability of big integers.</p>
+<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+</span><span class="boring">Main := |_, _|
+</span>Assert 100000000 = 100_000_000
+<span class="boring">end
+</span></code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="variables-and-scopes"><a class="header" href="#variables-and-scopes">Variables and Scopes</a></h1>
+<p>Variables are named pointers that point to data in the call stack or the heap.</p>
+<p>Scopes are boundaries defined by functions (including anonymous ones), enums, unions, structs, or classes.</p>
+<p>Vega takes a simple yet robust approach to both variables and scopes, ensuring behavioral correctness and type safety.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
+<p>Vega variables are immutable and non-nullable by default, meaning their value cannot be changed or set to <code>nil</code> without explicit declaration.</p>
+<h2 id="declaration"><a class="header" href="#declaration">Declaration</a></h2>
+<p>Declared using <code>:=</code> (inferred form) or <code>T :=</code> (typed form).</p>
+<p>The type is assigned as <code>T</code> if it is given; otherwise, <a href="https://en.wikipedia.org/wiki/Type_inference">type inference</a> will attempt to infer the type. If inference fails, <code>any</code> will be assigned.</p>
+<pre><code>integer := 4
+floating := 3.14
+message := "Hello from Vega!"
+</code></pre>
+<h2 id="nullable-variables"><a class="header" href="#nullable-variables">Nullable Variables</a></h2>
+<p>Declared using <code>maybe</code>.</p>
+<p>If the inferred form is used and type inference fails, <code>maybe any</code> will be assigned.</p>
+<pre><code>maybe optional_int := 4
+maybe optional_float float := 3.14
+maybe optional_any := nil /* ?any */
+</code></pre>
+<h2 id="mutable-variables"><a class="header" href="#mutable-variables">Mutable Variables</a></h2>
+<p>Declared using <code>mut</code>.</p>
+<p>Mutations are performed with <code>&lt;-</code>.</p>
+<p>If the inferred form is used and type inference fails, <code>mut any</code> will be assigned.</p>
+<pre><code>mut mutable_int := 4
+mut mutable_float float := 3.14
+mut maybe mutable_any := nil
+
+mutable_int &lt;- 5
+mutable_float &lt;- 4.14
+mutable_any &lt;- "Hi!"
+</code></pre>
+<div class="warning">
+<h4 id="the-mut-modifier-must-be-written-before-the-maybe"><a class="header" href="#the-mut-modifier-must-be-written-before-the-maybe">The <code>mut</code> modifier must be written before the <code>maybe</code></a></h4>
+<p>The reason lies on the lexical logic:</p>
+<p><code>mut maybe x := 1</code> means</p>
+<p><em><code>x</code> is a mutable integer that may not have a value.</em></p>
+<p>while <code>maybe mut x := 1</code> means</p>
+<p><em><code>x</code> is maybe a mutable integer.</em></p>
+</div>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scopes"><a class="header" href="#scopes">Scopes</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="control-flow"><a class="header" href="#control-flow">Control Flow</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="conditional-branching"><a class="header" href="#conditional-branching">Conditional Branching</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="looping"><a class="header" href="#looping">Looping</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="functions-1"><a class="header" href="#functions-1">Functions</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="call-dispatching"><a class="header" href="#call-dispatching">Call Dispatching</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="error-handling"><a class="header" href="#error-handling">Error Handling</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="handling-the-exceptions"><a class="header" href="#handling-the-exceptions">Handling the Exceptions</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="polymorphism"><a class="header" href="#polymorphism">Polymorphism</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="any-type"><a class="header" href="#any-type">Any Type</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="generics"><a class="header" href="#generics">Generics</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="reflection"><a class="header" href="#reflection">Reflection</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="function-overloading"><a class="header" href="#function-overloading">Function Overloading</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="behaviors"><a class="header" href="#behaviors">Behaviors</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="memory-management"><a class="header" href="#memory-management">Memory Management</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="garbage-collection"><a class="header" href="#garbage-collection">Garbage Collection</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="referencing"><a class="header" href="#referencing">Referencing</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="multithreading-and-concurrency"><a class="header" href="#multithreading-and-concurrency">Multithreading and Concurrency</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="actors"><a class="header" href="#actors">Actors</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scheduler"><a class="header" href="#scheduler">Scheduler</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mutable-variables-across-actors"><a class="header" href="#mutable-variables-across-actors">Mutable Variables Across Actors</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ffi"><a class="header" href="#ffi">FFI</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="external-functions"><a class="header" href="#external-functions">External Functions</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="raw-pointers"><a class="header" href="#raw-pointers">Raw Pointers</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="scheduling-external-functions"><a class="header" href="#scheduling-external-functions">Scheduling External Functions</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="standard-library"><a class="header" href="#standard-library">Standard Library</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="str-1"><a class="header" href="#str-1">str</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="math"><a class="header" href="#math">math</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="num"><a class="header" href="#num">num</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="behaviors-1"><a class="header" href="#behaviors-1">behaviors</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="collections"><a class="header" href="#collections">collections</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="env"><a class="header" href="#env">env</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="os"><a class="header" href="#os">os</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="io"><a class="header" href="#io">io</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="net"><a class="header" href="#net">net</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="testing"><a class="header" href="#testing">testing</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ffi-1"><a class="header" href="#ffi-1">ffi</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="compilation-and-execution"><a class="header" href="#compilation-and-execution">Compilation and Execution</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="compilation-pipeline"><a class="header" href="#compilation-pipeline">Compilation Pipeline</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ahead-of-time-compilation"><a class="header" href="#ahead-of-time-compilation">Ahead-Of-Time Compilation</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="just-in-time-compilation"><a class="header" href="#just-in-time-compilation">Just-In-Time Compilation</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="compiling-as-a-library"><a class="header" href="#compiling-as-a-library">Compiling As A Library</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-orbit-package-manager"><a class="header" href="#the-orbit-package-manager">The Orbit Package Manager</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="orb"><a class="header" href="#orb">Orb</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="orbvg"><a class="header" href="#orbvg">Orb.vg</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="orbitsio"><a class="header" href="#orbitsio">Orbits.io</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="importing-orbs"><a class="header" href="#importing-orbs">Importing Orbs</a></h1>
 
                     </main>
 

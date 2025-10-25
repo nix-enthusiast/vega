@@ -1,5 +1,5 @@
 # Data Types
 
-Data is an informative value in a scattered or structured composition, which can both derive or be derived by another data.
+Data is an informative value, which is either in a structured or unstructured form and capable of both being derived and deriving others.
 
-Storing and manipulating data is the primary purpose of all programming languages. In this section, different variants of the data types in Vega will be explained.
+The primary purpose of any programming language is to store, transform, and manipulate data. Vega provides several distinct data types to accomplish this purpose.

@@ -6,6 +6,7 @@ title = "The Vega Programming Language"
 
 [output.html]
 mathjax-support = true
+git-repository-url = "https://github.com/nix-enthusiast/vega"
 
 #[output.pdf]
 #pdf = true

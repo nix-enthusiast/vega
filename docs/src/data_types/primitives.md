@@ -1,8 +1,9 @@
 # Primitives
 
-Primitives are the built-in essential types to build the rest of the language. Other types not mentioned here is derived or build upon these types.
+Primitives are the built-in essential types to build the rest of the language. Other types not mentioned here are either derived or built upon these primitives.
 
-### Integers
+## Integers
+Integers are binary representations of whole values.
 
 |Bits/Sign         |Signed |Unsigned|
 |------------------|-------|--------|
@@ -12,9 +13,11 @@ Primitives are the built-in essential types to build the rest of the language. O
 |\\(64\\)          |`i64`  |`u64`   |
 |\\(128\\)         |`i128` |`u128`  |
 |\\(pointer\\)[^1] |`int`  |`uint`  |
-|\\(2^{pointer}\\) |`bint` |        |
+|\\(2^{pointer}\\) |`ibig` |        |
 
-### Floats
+## Floats
+The [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)-compliant binary representation of real values with limited precision.
+
 |Bits              |Type     |
 |------------------|---------|
 |\\(16\\)          |`f16`    |
@@ -23,9 +26,10 @@ Primitives are the built-in essential types to build the rest of the language. O
 |\\(80\\)          |`f80`    |
 |\\(128\\)         |`f128`   |
 |\\(pointer\\)     |`float`  |
-|\\(2^{pointer}\\) |`bfloat` |
+|\\(2^{pointer}\\) |`fbig`   |
 
-### FFI Numbers
+## FFI Numbers
+The aliases of integer and float primitives used to import numeric types in their appropriate [C](https://en.wikipedia.org/wiki/C_(programming_language)) representation from external libraries.
 
 |C             |Signed          |Unsigned        |
 |--------------|----------------|----------------|
@@ -38,26 +42,25 @@ Primitives are the built-in essential types to build the rest of the language. O
 |`double`      |`c_double`      |                |
 |`long double` |`c_long_double` |                |
 
-### `bool`    
+## `bool`    
+A single-bit value which can be either `true` or `false`.
 
-Boolean are single-bit values, which can be either `true` or `false`.
-
-Despite their size being 1 bit, they use 1 byte (8 bits), since the smallest memory block is 1 byte.
+Although one bit suffices for a boolean compiler has to allocate one byte for it, since the smallest memory block is 1 byte.
 
 ```vega
-;;main = |_, _|
-x = true
-x = false
+;;Main := |_, _|
+good := true
+bad := false
 ;;end
 ``` 
 
-### `char`
-Represents a single [Unicode Scalar Value](https://www.unicode.org/glossary/#unicode_scalar_value) inside `u32`.
+## `char`
+An `u32` value that represents a single [Unicode Scalar Value](https://www.unicode.org/glossary/#unicode_scalar_value).
 
 ```vega
-;;main = |_, _|
-c = 'a'
-c = '🥔'
+;;Main := |_, _|
+a := 'a'
+potato := '🥔'
 ;;end
 ```
 
