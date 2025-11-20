@@ -181,6 +181,31 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="scopes"><a class="header" href="#scopes">Scopes</a></h1>
+<p>Scopes enforce lexical separation between language constructs to maintain logical and behavioral coherence. Vega provides four scope types to support this.</p>
+<h2 id="function-scopes"><a class="header" href="#function-scopes">Function Scopes</a></h2>
+<p>Function scopes begin at the function signature (<code>T :: R</code>) and end with <code>end</code>, defining which expressions are evaluated within the function.</p>
+<pre><code class="language-vega"><span class="boring">import std/io/Puts
+</span>SayHi := :: () 
+  Puts "Hi %!" 
+end
+</code></pre>
+<h2 id="conditional-and-branch-scopes"><a class="header" href="#conditional-and-branch-scopes">Conditional and Branch Scopes</a></h2>
+<p>Conditional scopes begin with <code>cond</code> and end with <code>end</code>, defining which expressions are evaluated within it, while each branch under it forms its own scope, starting at <code>=&gt;</code> and ending at <code>end</code>.</p>
+<pre><code class="language-vega"><span class="boring">import std/io/Puts
+</span>cond
+  x &lt; 5 =&gt; Puts "&lt; 5" ; end
+  x @ 5..10 =&gt; Puts "5 &lt;= x &lt; 10" ; end
+end 
+</code></pre>
+<h2 id="composite-and-mathematical-data-type-scopes"><a class="header" href="#composite-and-mathematical-data-type-scopes">Composite and Mathematical Data Type Scopes</a></h2>
+<p>Composite and mathematical data types use curly braces <code>{}</code> and brackets <code>[]</code> to delimit which fields, elements, or values belong to the structure.</p>
+<pre><code class="language-vega">Tuple := {1, 4.5}
+Temperature := '{Fahrenheit ; Celsius }
+Person := #{name str ; age u8}
+
+List := [1, 2, 3]
+Matrix := #[4, 7, 2; 1, 9, 6; 3, 8, 6]
+</code></pre>
 
                     </main>
 
@@ -211,6 +236,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

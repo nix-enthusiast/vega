@@ -8,7 +8,7 @@ Vega has 23 keywords, each linked to its relevant section.
 |------------|------------------------------------------------------------------------------------------------------------------|
 | `run`      | [Multithreading and Concurrency](./multithreading_and_concurrency.md)                                            |
 | `return`   | [Functions and Behaviors](./functions_and_behaviors.md)                                                          |
-| `if`       | [Conditional Branching](./control_flow.md)                                                                       |
+| `cond`     | [Conditional Branching](./control_flow.md)                                                                       |
 | `try`      | [Error Handling](./error_handling.md)                                                                            |
 | `catch`    | [Error Handling](./error_handling.md)                                                                            |
 | `end`      | [Scopes](./variables_and_scopes/scopes.md)                                                                       |
@@ -17,7 +17,6 @@ Vega has 23 keywords, each linked to its relevant section.
 | `or`       | [Conditional Branching](./control_flow.md) and [math](./standard_library/math.md)                                |
 | `xor`      | [Conditional Branching](./control_flow.md) and [math](./standard_library/math.md)                                |
 | `not`      | [Conditional Branching](./control_flow.md) and [math](./standard_library/math.md)                                |
-| `bsh`      | [math](./standard_library/math.md)                                                                               |
 | `true`     | [Control Flow](./control_flow.md)                                                                                |
 | `false`    | [Control Flow](./control_flow.md)                                                                                |
 | `nil`      | [Variables](./variables_and_scopes_and_namespace/variables.md)                                                   |

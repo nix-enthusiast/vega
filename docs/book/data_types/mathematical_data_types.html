@@ -205,7 +205,7 @@
 </div>
 <h3 id="matrix-lwt"><a class="header" href="#matrix-lwt">Matrix (<code>#[L:W]T</code>)</a></h3>
 <p>A special list with the optional length of <code>L</code> and width of <code>W</code>, for advanced mathematical calculations.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>matrix_1 := #[1, 2, 3; 4, 5, 6; 7, 8, 9] 
 
 matrix_2 := [3:3]int#[ 1 2 3
@@ -243,6 +243,22 @@ matrix_2 := [3:3]int#[ 1 2 3
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

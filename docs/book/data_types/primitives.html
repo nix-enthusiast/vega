@@ -222,14 +222,14 @@
 <h2 id="bool"><a class="header" href="#bool"><code>bool</code></a></h2>
 <p>A single-bit value which can be either <code>true</code> or <code>false</code>.</p>
 <p>Although one bit suffices for a boolean compiler has to allocate one byte for it, since the smallest memory block is 1 byte.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>good := true
 bad := false
 <span class="boring">end
 </span></code></pre>
 <h2 id="char"><a class="header" href="#char"><code>char</code></a></h2>
 <p>An <code>u32</code> value that represents a single <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode Scalar Value</a>.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>a := 'a'
 potato := '🥔'
 <span class="boring">end
@@ -268,6 +268,22 @@ potato := '🥔'
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

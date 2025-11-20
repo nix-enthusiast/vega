@@ -185,31 +185,37 @@
 <h2 id="declaration"><a class="header" href="#declaration">Declaration</a></h2>
 <p>Declared using <code>:=</code> (inferred form) or <code>T :=</code> (typed form).</p>
 <p>The type is assigned as <code>T</code> if it is given; otherwise, <a href="https://en.wikipedia.org/wiki/Type_inference">type inference</a> will attempt to infer the type. If inference fails, <code>any</code> will be assigned.</p>
-<pre><code>integer := 4
+<pre><code class="language-vega"><span class="boring">Main = _, _ ::
+</span>integer := 4
 floating := 3.14
 message := "Hello from Vega!"
-</code></pre>
+<span class="boring">end
+</span></code></pre>
 <h2 id="nullable-variables"><a class="header" href="#nullable-variables">Nullable Variables</a></h2>
 <p>Declared using <code>maybe</code>.</p>
 <p>If the inferred form is used and type inference fails, <code>maybe any</code> will be assigned.</p>
-<pre><code>maybe optional_int := 4
+<pre><code class="language-vega"><span class="boring">Main = _, _ ::
+</span>maybe optional_int := 4
 maybe optional_float float := 3.14
-maybe optional_any := nil /* ?any */
-</code></pre>
+maybe optional_any := nil /* maybe any */
+<span class="boring">end
+</span></code></pre>
 <h2 id="mutable-variables"><a class="header" href="#mutable-variables">Mutable Variables</a></h2>
 <p>Declared using <code>mut</code>.</p>
-<p>Mutations are performed with <code>&lt;-</code>.</p>
+<p>Mutations are performed with <code>-&gt;</code>.</p>
 <p>If the inferred form is used and type inference fails, <code>mut any</code> will be assigned.</p>
-<pre><code>mut mutable_int := 4
+<pre><code class="language-vega"><span class="boring">Main = _, _ ::
+</span>mut mutable_int := 4
 mut mutable_float float := 3.14
-mut maybe mutable_any := nil
+mut maybe mutable_any := nil /* mut any */
 
-mutable_int &lt;- 5
-mutable_float &lt;- 4.14
-mutable_any &lt;- "Hi!"
-</code></pre>
+mutable_int -&gt; 5
+mutable_float -&gt; 4.14
+mutable_any -&gt; "Hi!"
+<span class="boring">end
+</span></code></pre>
 <div class="warning">
-<h4 id="the-mut-modifier-must-be-written-before-the-maybe"><a class="header" href="#the-mut-modifier-must-be-written-before-the-maybe">The <code>mut</code> modifier must be written before the <code>maybe</code></a></h4>
+<h4 id="the-order-of-mut-and-maybe-is-important"><a class="header" href="#the-order-of-mut-and-maybe-is-important">The order of <code>mut</code> and <code>maybe</code> is important</a></h4>
 <p>The reason lies on the lexical logic:</p>
 <p><code>mut maybe x := 1</code> means</p>
 <p><em><code>x</code> is a mutable integer that may not have a value.</em></p>
@@ -246,6 +252,22 @@ mutable_any &lt;- "Hi!"
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

@@ -183,24 +183,25 @@
                         <h1 id="composite-data-types"><a class="header" href="#composite-data-types">Composite data types</a></h1>
 <p>Composite data types (CDTs) are used for storing more complex data in a structured composition in the memory.</p>
 <h2 id="arrays"><a class="header" href="#arrays">Arrays</a></h2>
-<h3 id="list-ntt"><a class="header" href="#list-ntt">List (<code>[N:t]T</code>)</a></h3>
-<p>Growable array which allocated from heap to store <code>T</code> and the optional sentinel <code>t</code>, where <code>t</code> is <code>T</code>, with the minimum size of <code>N</code>.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<h3 id="lists"><a class="header" href="#lists">Lists</a></h3>
+<p>Declared using <code>[N:t]T</code></p>
+<p>Lists are growable arrays which are allocated from heap to store <code>T</code> and the optional sentinel <code>t</code>, where <code>t</code> is <code>T</code>, with the minimum size of <code>N</code>.</p>
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>x := [1, 2, 3]
 x := char['h', 'e', 'l', 'l', 'o']
 <span class="boring">end
 </span></code></pre>
-<h2 id="tuples-"><a class="header" href="#tuples-">Tuples (<code>{}</code>)</a></h2>
-<p>An ordered set with finite size.</p>
+<h2 id="tuples"><a class="header" href="#tuples">Tuples</a></h2>
 <p>Declared using <code>{T,V,..,N}</code></p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<p>Tuples are ordered sets with a finite size.</p>
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>coordinates := {74.5, 91.4}
 <span class="boring">end
 </span></code></pre>
 <h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
 <p>Declared using <code>'{}</code> notation.</p>
 <p>Enums are both tagged numbers and sum types.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>Base := '{
   /* C++ - like tagged numbers */
   Base2 i8 := 2
@@ -222,7 +223,7 @@ myHex := Base.Hexadecimal
 <h2 id="records"><a class="header" href="#records">Records</a></h2>
 <p>Declared using <code>#{}</code> notation</p>
 <p>Records are the data types to store data in a structured composition.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>Person := #{
   name str
   age u8
@@ -246,7 +247,7 @@ vaseOfi8 := Vase(i8){ 23 }
 <h2 id="str"><a class="header" href="#str"><code>str</code></a></h2>
 <p>Declared using <code>""</code> notation.</p>
 <p><code>str</code> is basically an immutable and <a href="https://en.wikipedia.org/wiki/String_interning">internable</a> <code>[]u8</code> and used for containing information in text with <a href="https://www.unicode.org/glossary/#UTF_8">UTF-8</a> encoding.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>msg := "Hello, World!"
 <span class="boring">end
 </span></code></pre>
@@ -280,6 +281,22 @@ vaseOfi8 := Vase(i8){ 23 }
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

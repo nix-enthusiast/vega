@@ -204,7 +204,7 @@
 <div class="table-wrapper"><table><thead><tr><th>Keyword</th><th>Look At</th></tr></thead><tbody>
 <tr><td><code>run</code></td><td><a href="./multithreading_and_concurrency.html">Multithreading and Concurrency</a></td></tr>
 <tr><td><code>return</code></td><td><a href="./functions_and_behaviors.html">Functions and Behaviors</a></td></tr>
-<tr><td><code>if</code></td><td><a href="./control_flow.html">Conditional Branching</a></td></tr>
+<tr><td><code>cond</code></td><td><a href="./control_flow.html">Conditional Branching</a></td></tr>
 <tr><td><code>try</code></td><td><a href="./error_handling.html">Error Handling</a></td></tr>
 <tr><td><code>catch</code></td><td><a href="./error_handling.html">Error Handling</a></td></tr>
 <tr><td><code>end</code></td><td><a href="./variables_and_scopes/scopes.html">Scopes</a></td></tr>
@@ -213,7 +213,6 @@
 <tr><td><code>or</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
 <tr><td><code>xor</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
 <tr><td><code>not</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
-<tr><td><code>bsh</code></td><td><a href="./standard_library/math.html">math</a></td></tr>
 <tr><td><code>true</code></td><td><a href="./control_flow.html">Control Flow</a></td></tr>
 <tr><td><code>false</code></td><td><a href="./control_flow.html">Control Flow</a></td></tr>
 <tr><td><code>nil</code></td><td><a href="./variables_and_scopes_and_namespace/variables.html">Variables</a></td></tr>
@@ -271,14 +270,14 @@
 <h2 id="bool"><a class="header" href="#bool"><code>bool</code></a></h2>
 <p>A single-bit value which can be either <code>true</code> or <code>false</code>.</p>
 <p>Although one bit suffices for a boolean compiler has to allocate one byte for it, since the smallest memory block is 1 byte.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>good := true
 bad := false
 <span class="boring">end
 </span></code></pre>
 <h2 id="char"><a class="header" href="#char"><code>char</code></a></h2>
 <p>An <code>u32</code> value that represents a single <a href="https://www.unicode.org/glossary/#unicode_scalar_value">Unicode Scalar Value</a>.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>a := 'a'
 potato := '🥔'
 <span class="boring">end
@@ -290,24 +289,25 @@ potato := '🥔'
 </ol><div style="break-before: page; page-break-before: always;"></div><h1 id="composite-data-types"><a class="header" href="#composite-data-types">Composite data types</a></h1>
 <p>Composite data types (CDTs) are used for storing more complex data in a structured composition in the memory.</p>
 <h2 id="arrays"><a class="header" href="#arrays">Arrays</a></h2>
-<h3 id="list-ntt"><a class="header" href="#list-ntt">List (<code>[N:t]T</code>)</a></h3>
-<p>Growable array which allocated from heap to store <code>T</code> and the optional sentinel <code>t</code>, where <code>t</code> is <code>T</code>, with the minimum size of <code>N</code>.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<h3 id="lists"><a class="header" href="#lists">Lists</a></h3>
+<p>Declared using <code>[N:t]T</code></p>
+<p>Lists are growable arrays which are allocated from heap to store <code>T</code> and the optional sentinel <code>t</code>, where <code>t</code> is <code>T</code>, with the minimum size of <code>N</code>.</p>
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>x := [1, 2, 3]
 x := char['h', 'e', 'l', 'l', 'o']
 <span class="boring">end
 </span></code></pre>
-<h2 id="tuples-"><a class="header" href="#tuples-">Tuples (<code>{}</code>)</a></h2>
-<p>An ordered set with finite size.</p>
+<h2 id="tuples"><a class="header" href="#tuples">Tuples</a></h2>
 <p>Declared using <code>{T,V,..,N}</code></p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<p>Tuples are ordered sets with a finite size.</p>
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>coordinates := {74.5, 91.4}
 <span class="boring">end
 </span></code></pre>
 <h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
 <p>Declared using <code>'{}</code> notation.</p>
 <p>Enums are both tagged numbers and sum types.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>Base := '{
   /* C++ - like tagged numbers */
   Base2 i8 := 2
@@ -329,7 +329,7 @@ myHex := Base.Hexadecimal
 <h2 id="records"><a class="header" href="#records">Records</a></h2>
 <p>Declared using <code>#{}</code> notation</p>
 <p>Records are the data types to store data in a structured composition.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>Person := #{
   name str
   age u8
@@ -353,7 +353,7 @@ vaseOfi8 := Vase(i8){ 23 }
 <h2 id="str"><a class="header" href="#str"><code>str</code></a></h2>
 <p>Declared using <code>""</code> notation.</p>
 <p><code>str</code> is basically an immutable and <a href="https://en.wikipedia.org/wiki/String_interning">internable</a> <code>[]u8</code> and used for containing information in text with <a href="https://www.unicode.org/glossary/#UTF_8">UTF-8</a> encoding.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>msg := "Hello, World!"
 <span class="boring">end
 </span></code></pre>
@@ -382,7 +382,7 @@ vaseOfi8 := Vase(i8){ 23 }
 </div>
 <h3 id="matrix-lwt"><a class="header" href="#matrix-lwt">Matrix (<code>#[L:W]T</code>)</a></h3>
 <p>A special list with the optional length of <code>L</code> and width of <code>W</code>, for advanced mathematical calculations.</p>
-<pre><code class="language-vega"><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">Main := _, _ ::
 </span>matrix_1 := #[1, 2, 3; 4, 5, 6; 7, 8, 9] 
 
 matrix_2 := [3:3]int#[ 1 2 3
@@ -394,7 +394,7 @@ matrix_2 := [3:3]int#[ 1 2 3
 <p>Notations are short prefixes or suffixes to distinguish ambiguous literal values or prevent the compiler from using the default type for that literal.</p>
 <h2 id="binary-notation-0b"><a class="header" href="#binary-notation-0b">Binary Notation (<code>0b</code>)</a></h2>
 <p>Binary notation is mostly used for <a href="https://developer.mozilla.org/en-US/docs/Glossary/Bitwise_flags">bit flags</a>.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
 </span>HAS_SWORD := 0b10000000
 HAS_WAND := 0b01000000
 HAS_ARROW := 0b00100000
@@ -404,7 +404,7 @@ MAGE := 0b00000100
 WARRIOR := 0b00000010
 ARCHER := 0b00000001
 
-<span class="boring">Main := |_, _|
+<span class="boring">Main := _, _ ::
 </span>/*Let's create a fellow archer with an armor, minion, and arrow*/
 archer := 0b00111001
 
@@ -416,18 +416,19 @@ Assert archer and ARCHER
 </span></code></pre>
 <h2 id="octal-notation-0o"><a class="header" href="#octal-notation-0o">Octal Notation (<code>0o</code>)</a></h2>
 <p>Octal notation is mostly used for <a href="https://developer.mozilla.org/en-US/docs/Glossary/Bitwise_flags">file permissions</a> of <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a>-compliant systems.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">import std/num/Bitshift
 </span>EXEC := 0o1
 WRITE := 0o2
 READ := 0o4
 RWX := 0o7
 RE := 0o5
 
-<span class="boring">Main := |_, _|
+<span class="boring">Main := _, _ ::
 </span>perm := 0o755
 
-user := (perm bsh 16) and RWX
-group := ((perm bsh 8) and 0xFF) and RE
+user := (Bitshift perm 16) and RWX
+group := (Bitshift perm 8 and 0xFF) and RE
 other := (perm and 0xFF) and RE
 
 Assert user = RWX
@@ -437,11 +438,11 @@ Assert other = RE
 </span></code></pre>
 <h2 id="hexadecimal-notation-0x"><a class="header" href="#hexadecimal-notation-0x">Hexadecimal Notation (<code>0x</code>)</a></h2>
 <p>Hexadecimal notation is mostly used for reading/writing raw data as bytes.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
-</span><span class="boring"> import std/io/Read
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">import std/io/Read
 </span>MAGIC := [0x7f, 0x45, 0x4C, 0x46]
 
-<span class="boring">Main := |_, _|
+<span class="boring">Main := _, _ ::
 </span>read_bytes := Read("my_elf")
 
 Assert read_bytes[..4] = MAGIC
@@ -449,8 +450,8 @@ Assert read_bytes[..4] = MAGIC
 </span></code></pre>
 <h2 id="integer-notation-_in-or-_un"><a class="header" href="#integer-notation-_in-or-_un">Integer notation (<code>_iN</code> or <code>_uN</code>)</a></h2>
 <p>Integer notation is used for disambiguating a written compile-time integer to the requested type. <code>N</code> stands for the <a href="./data_types/primitives.html#integers">bit size of the integer</a>.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
-</span><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">Main := _, _ ::
 </span>number := 12.34_i16
 number_big := 12.34_ibig
 
@@ -460,8 +461,8 @@ Assert number_big is ibig
 </span></code></pre>
 <h2 id="float-notation-_fn"><a class="header" href="#float-notation-_fn">Float notation (<code>_fN</code>)</a></h2>
 <p>Float notation is used for disambiguating a written compile-time float to the requested type. <code>N</code> stands for the <a href="./data_types/primitives.html#floats">bit size of the float</a>.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
-</span><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">Main := _, _ ::
 </span>number := 12.34_f16
 number_big := 12.34_fbig
 
@@ -471,8 +472,8 @@ Assert number_big is fbig
 </span></code></pre>
 <h2 id="thousands-separator-_"><a class="header" href="#thousands-separator-_">Thousands Separator (<code>_</code>)</a></h2>
 <p><a href="https://en.wikipedia.org/wiki/Decimal_separator#Digit_grouping">Thousands Separator</a> is used to assist the readability of big integers.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
-</span><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">Main := _, _ ::
 </span>Assert 100000000 = 100_000_000
 <span class="boring">end
 </span></code></pre>
@@ -485,31 +486,37 @@ Assert number_big is fbig
 <h2 id="declaration"><a class="header" href="#declaration">Declaration</a></h2>
 <p>Declared using <code>:=</code> (inferred form) or <code>T :=</code> (typed form).</p>
 <p>The type is assigned as <code>T</code> if it is given; otherwise, <a href="https://en.wikipedia.org/wiki/Type_inference">type inference</a> will attempt to infer the type. If inference fails, <code>any</code> will be assigned.</p>
-<pre><code>integer := 4
+<pre><code class="language-vega"><span class="boring">Main = _, _ ::
+</span>integer := 4
 floating := 3.14
 message := "Hello from Vega!"
-</code></pre>
+<span class="boring">end
+</span></code></pre>
 <h2 id="nullable-variables"><a class="header" href="#nullable-variables">Nullable Variables</a></h2>
 <p>Declared using <code>maybe</code>.</p>
 <p>If the inferred form is used and type inference fails, <code>maybe any</code> will be assigned.</p>
-<pre><code>maybe optional_int := 4
+<pre><code class="language-vega"><span class="boring">Main = _, _ ::
+</span>maybe optional_int := 4
 maybe optional_float float := 3.14
-maybe optional_any := nil /* ?any */
-</code></pre>
+maybe optional_any := nil /* maybe any */
+<span class="boring">end
+</span></code></pre>
 <h2 id="mutable-variables"><a class="header" href="#mutable-variables">Mutable Variables</a></h2>
 <p>Declared using <code>mut</code>.</p>
-<p>Mutations are performed with <code>&lt;-</code>.</p>
+<p>Mutations are performed with <code>-&gt;</code>.</p>
 <p>If the inferred form is used and type inference fails, <code>mut any</code> will be assigned.</p>
-<pre><code>mut mutable_int := 4
+<pre><code class="language-vega"><span class="boring">Main = _, _ ::
+</span>mut mutable_int := 4
 mut mutable_float float := 3.14
-mut maybe mutable_any := nil
+mut maybe mutable_any := nil /* mut any */
 
-mutable_int &lt;- 5
-mutable_float &lt;- 4.14
-mutable_any &lt;- "Hi!"
-</code></pre>
+mutable_int -&gt; 5
+mutable_float -&gt; 4.14
+mutable_any -&gt; "Hi!"
+<span class="boring">end
+</span></code></pre>
 <div class="warning">
-<h4 id="the-mut-modifier-must-be-written-before-the-maybe"><a class="header" href="#the-mut-modifier-must-be-written-before-the-maybe">The <code>mut</code> modifier must be written before the <code>maybe</code></a></h4>
+<h4 id="the-order-of-mut-and-maybe-is-important"><a class="header" href="#the-order-of-mut-and-maybe-is-important">The order of <code>mut</code> and <code>maybe</code> is important</a></h4>
 <p>The reason lies on the lexical logic:</p>
 <p><code>mut maybe x := 1</code> means</p>
 <p><em><code>x</code> is a mutable integer that may not have a value.</em></p>
@@ -517,6 +524,31 @@ mutable_any &lt;- "Hi!"
 <p><em><code>x</code> is maybe a mutable integer.</em></p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="scopes"><a class="header" href="#scopes">Scopes</a></h1>
+<p>Scopes enforce lexical separation between language constructs to maintain logical and behavioral coherence. Vega provides four scope types to support this.</p>
+<h2 id="function-scopes"><a class="header" href="#function-scopes">Function Scopes</a></h2>
+<p>Function scopes begin at the function signature (<code>T :: R</code>) and end with <code>end</code>, defining which expressions are evaluated within the function.</p>
+<pre><code class="language-vega"><span class="boring">import std/io/Puts
+</span>SayHi := :: () 
+  Puts "Hi %!" 
+end
+</code></pre>
+<h2 id="conditional-and-branch-scopes"><a class="header" href="#conditional-and-branch-scopes">Conditional and Branch Scopes</a></h2>
+<p>Conditional scopes begin with <code>cond</code> and end with <code>end</code>, defining which expressions are evaluated within it, while each branch under it forms its own scope, starting at <code>=&gt;</code> and ending at <code>end</code>.</p>
+<pre><code class="language-vega"><span class="boring">import std/io/Puts
+</span>cond
+  x &lt; 5 =&gt; Puts "&lt; 5" ; end
+  x @ 5..10 =&gt; Puts "5 &lt;= x &lt; 10" ; end
+end 
+</code></pre>
+<h2 id="composite-and-mathematical-data-type-scopes"><a class="header" href="#composite-and-mathematical-data-type-scopes">Composite and Mathematical Data Type Scopes</a></h2>
+<p>Composite and mathematical data types use curly braces <code>{}</code> and brackets <code>[]</code> to delimit which fields, elements, or values belong to the structure.</p>
+<pre><code class="language-vega">Tuple := {1, 4.5}
+Temperature := '{Fahrenheit ; Celsius }
+Person := #{name str ; age u8}
+
+List := [1, 2, 3]
+Matrix := #[4, 7, 2; 1, 9, 6; 3, 8, 6]
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="control-flow"><a class="header" href="#control-flow">Control Flow</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="conditional-branching"><a class="header" href="#conditional-branching">Conditional Branching</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="looping"><a class="header" href="#looping">Looping</a></h1>
@@ -583,6 +615,22 @@ mutable_any &lt;- "Hi!"
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

@@ -186,7 +186,7 @@
 <div class="table-wrapper"><table><thead><tr><th>Keyword</th><th>Look At</th></tr></thead><tbody>
 <tr><td><code>run</code></td><td><a href="./multithreading_and_concurrency.html">Multithreading and Concurrency</a></td></tr>
 <tr><td><code>return</code></td><td><a href="./functions_and_behaviors.html">Functions and Behaviors</a></td></tr>
-<tr><td><code>if</code></td><td><a href="./control_flow.html">Conditional Branching</a></td></tr>
+<tr><td><code>cond</code></td><td><a href="./control_flow.html">Conditional Branching</a></td></tr>
 <tr><td><code>try</code></td><td><a href="./error_handling.html">Error Handling</a></td></tr>
 <tr><td><code>catch</code></td><td><a href="./error_handling.html">Error Handling</a></td></tr>
 <tr><td><code>end</code></td><td><a href="./variables_and_scopes/scopes.html">Scopes</a></td></tr>
@@ -195,7 +195,6 @@
 <tr><td><code>or</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
 <tr><td><code>xor</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
 <tr><td><code>not</code></td><td><a href="./control_flow.html">Conditional Branching</a> and <a href="./standard_library/math.html">math</a></td></tr>
-<tr><td><code>bsh</code></td><td><a href="./standard_library/math.html">math</a></td></tr>
 <tr><td><code>true</code></td><td><a href="./control_flow.html">Control Flow</a></td></tr>
 <tr><td><code>false</code></td><td><a href="./control_flow.html">Control Flow</a></td></tr>
 <tr><td><code>nil</code></td><td><a href="./variables_and_scopes_and_namespace/variables.html">Variables</a></td></tr>
@@ -238,6 +237,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

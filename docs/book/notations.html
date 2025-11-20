@@ -184,7 +184,7 @@
 <p>Notations are short prefixes or suffixes to distinguish ambiguous literal values or prevent the compiler from using the default type for that literal.</p>
 <h2 id="binary-notation-0b"><a class="header" href="#binary-notation-0b">Binary Notation (<code>0b</code>)</a></h2>
 <p>Binary notation is mostly used for <a href="https://developer.mozilla.org/en-US/docs/Glossary/Bitwise_flags">bit flags</a>.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
 </span>HAS_SWORD := 0b10000000
 HAS_WAND := 0b01000000
 HAS_ARROW := 0b00100000
@@ -194,7 +194,7 @@ MAGE := 0b00000100
 WARRIOR := 0b00000010
 ARCHER := 0b00000001
 
-<span class="boring">Main := |_, _|
+<span class="boring">Main := _, _ ::
 </span>/*Let's create a fellow archer with an armor, minion, and arrow*/
 archer := 0b00111001
 
@@ -206,18 +206,19 @@ Assert archer and ARCHER
 </span></code></pre>
 <h2 id="octal-notation-0o"><a class="header" href="#octal-notation-0o">Octal Notation (<code>0o</code>)</a></h2>
 <p>Octal notation is mostly used for <a href="https://developer.mozilla.org/en-US/docs/Glossary/Bitwise_flags">file permissions</a> of <a href="https://en.wikipedia.org/wiki/POSIX">POSIX</a>-compliant systems.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">import std/num/Bitshift
 </span>EXEC := 0o1
 WRITE := 0o2
 READ := 0o4
 RWX := 0o7
 RE := 0o5
 
-<span class="boring">Main := |_, _|
+<span class="boring">Main := _, _ ::
 </span>perm := 0o755
 
-user := (perm bsh 16) and RWX
-group := ((perm bsh 8) and 0xFF) and RE
+user := (Bitshift perm 16) and RWX
+group := (Bitshift perm 8 and 0xFF) and RE
 other := (perm and 0xFF) and RE
 
 Assert user = RWX
@@ -227,11 +228,11 @@ Assert other = RE
 </span></code></pre>
 <h2 id="hexadecimal-notation-0x"><a class="header" href="#hexadecimal-notation-0x">Hexadecimal Notation (<code>0x</code>)</a></h2>
 <p>Hexadecimal notation is mostly used for reading/writing raw data as bytes.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
-</span><span class="boring"> import std/io/Read
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">import std/io/Read
 </span>MAGIC := [0x7f, 0x45, 0x4C, 0x46]
 
-<span class="boring">Main := |_, _|
+<span class="boring">Main := _, _ ::
 </span>read_bytes := Read("my_elf")
 
 Assert read_bytes[..4] = MAGIC
@@ -239,8 +240,8 @@ Assert read_bytes[..4] = MAGIC
 </span></code></pre>
 <h2 id="integer-notation-_in-or-_un"><a class="header" href="#integer-notation-_in-or-_un">Integer notation (<code>_iN</code> or <code>_uN</code>)</a></h2>
 <p>Integer notation is used for disambiguating a written compile-time integer to the requested type. <code>N</code> stands for the <a href="./data_types/primitives.html#integers">bit size of the integer</a>.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
-</span><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">Main := _, _ ::
 </span>number := 12.34_i16
 number_big := 12.34_ibig
 
@@ -250,8 +251,8 @@ Assert number_big is ibig
 </span></code></pre>
 <h2 id="float-notation-_fn"><a class="header" href="#float-notation-_fn">Float notation (<code>_fN</code>)</a></h2>
 <p>Float notation is used for disambiguating a written compile-time float to the requested type. <code>N</code> stands for the <a href="./data_types/primitives.html#floats">bit size of the float</a>.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
-</span><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">Main := _, _ ::
 </span>number := 12.34_f16
 number_big := 12.34_fbig
 
@@ -261,8 +262,8 @@ Assert number_big is fbig
 </span></code></pre>
 <h2 id="thousands-separator-_"><a class="header" href="#thousands-separator-_">Thousands Separator (<code>_</code>)</a></h2>
 <p><a href="https://en.wikipedia.org/wiki/Decimal_separator#Digit_grouping">Thousands Separator</a> is used to assist the readability of big integers.</p>
-<pre><code class="language-vega"><span class="boring"> import std/testing/Assert
-</span><span class="boring">Main := |_, _|
+<pre><code class="language-vega"><span class="boring">import std/testing/Assert
+</span><span class="boring">Main := _, _ ::
 </span>Assert 100000000 = 100_000_000
 <span class="boring">end
 </span></code></pre>
@@ -296,6 +297,22 @@ Assert number_big is fbig
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

@@ -48,7 +48,7 @@ A single-bit value which can be either `true` or `false`.
 Although one bit suffices for a boolean compiler has to allocate one byte for it, since the smallest memory block is 1 byte.
 
 ```vega
-;;Main := |_, _|
+;;Main := _, _ ::
 good := true
 bad := false
 ;;end
@@ -58,7 +58,7 @@ bad := false
 An `u32` value that represents a single [Unicode Scalar Value](https://www.unicode.org/glossary/#unicode_scalar_value).
 
 ```vega
-;;Main := |_, _|
+;;Main := _, _ ::
 a := 'a'
 potato := '🥔'
 ;;end

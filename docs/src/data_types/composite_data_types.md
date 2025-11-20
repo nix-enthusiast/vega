@@ -5,25 +5,27 @@ Composite data types (CDTs) are used for storing more complex data in a structur
 ## Arrays
 
 
-### List (`[N:t]T`)
+### Lists
 
-Growable array which allocated from heap to store `T` and the optional sentinel `t`, where `t` is `T`, with the minimum size of `N`.
+Declared using `[N:t]T`
+
+Lists are growable arrays which are allocated from heap to store `T` and the optional sentinel `t`, where `t` is `T`, with the minimum size of `N`.
 
 ```vega
-;;Main := |_, _|
+;;Main := _, _ ::
 x := [1, 2, 3]
 x := char['h', 'e', 'l', 'l', 'o']
 ;;end
 ```
 
-## Tuples (`{}`)
-
-An ordered set with finite size.
+## Tuples
 
 Declared using `{T,V,..,N}`
 
+Tuples are ordered sets with a finite size.
+
 ```vega
-;;Main := |_, _|
+;;Main := _, _ ::
 coordinates := {74.5, 91.4}
 ;;end
 ```
@@ -35,7 +37,7 @@ Declared using `'{}` notation.
 Enums are both tagged numbers and sum types.
 
 ```vega
-;;Main := |_, _|
+;;Main := _, _ ::
 Base := '{
   /* C++ - like tagged numbers */
   Base2 i8 := 2
@@ -62,7 +64,7 @@ Declared using `#{}` notation
 Records are the data types to store data in a structured composition.
 
 ```vega
-;;Main := |_, _|
+;;Main := _, _ ::
 Person := #{
   name str
   age u8
@@ -91,7 +93,7 @@ Declared using `""` notation.
 `str` is basically an immutable and [internable](https://en.wikipedia.org/wiki/String_interning) `[]u8` and used for containing information in text with [UTF-8](https://www.unicode.org/glossary/#UTF_8) encoding.
 
 ```vega
-;;Main := |_, _|
+;;Main := _, _ ::
 msg := "Hello, World!"
 ;;end
 ```

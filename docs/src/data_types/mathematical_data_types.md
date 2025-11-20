@@ -28,7 +28,7 @@
 A special list with the optional length of `L` and width of `W`, for advanced mathematical calculations.
   
 ```vega
-;;Main := |_, _|
+;;Main := _, _ ::
 matrix_1 := #[1, 2, 3; 4, 5, 6; 7, 8, 9] 
 
 matrix_2 := [3:3]int#[ 1 2 3
